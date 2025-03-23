@@ -13,11 +13,10 @@ class MainViewModel(
 ): ViewModel() {
 
     private val _loading = MutableStateFlow(false)
-
-    private val loading: StateFlow<Boolean> get() = _loading
+    val loading: StateFlow<Boolean> get() = _loading
 
     private val _onLoginSuccess = MutableStateFlow(false)
-    private val onLoginSuccess: StateFlow<Boolean> get() = _onLoginSuccess
+    val onLoginSuccess: StateFlow<Boolean> get() = _onLoginSuccess
 
     fun startLogIn(userName: String, password: String) {
         _loading.value = true
