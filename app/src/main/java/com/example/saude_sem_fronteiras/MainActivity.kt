@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.foundation.layout.Column
 import com.example.saude_sem_fronteiras.ui.theme.SaudesemfronteirasTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,10 +33,19 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+    Column{
+
+        Text(
+            text = "Hello $name!",
+            modifier = modifier
+        );
+
+        Text(
+            text = "Hello $name!",
+            modifier = modifier
+        );
+
+    }
 }
 
 @Preview(showBackground = true)
