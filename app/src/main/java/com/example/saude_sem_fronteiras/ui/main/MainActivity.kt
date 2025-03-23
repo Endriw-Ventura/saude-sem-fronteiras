@@ -1,9 +1,11 @@
 package com.example.saude_sem_fronteiras.ui.main
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -34,60 +36,92 @@ import androidx.compose.ui.unit.dp
 import com.example.saude_sem_fronteiras.R
 import com.example.saude_sem_fronteiras.ui.components.CustomButton
 import com.example.saude_sem_fronteiras.ui.components.CustomTextField
+import com.example.saude_sem_fronteiras.ui.components.Loading
 import com.example.saude_sem_fronteiras.ui.components.Logo
+import com.example.saude_sem_fronteiras.ui.utils.collectAsStateLifecycleAware
 
 class MainActivity : ComponentActivity() {
+
+    private val viewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             SaudesemfronteirasTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Login(
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    val isLoading = viewModel.loading.collectAsStateLifecycleAware()
+                    if (isLoading.value){
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(MaterialTheme.colorScheme.primary),
+                            contentAlignment = Alignment.Center
+                        ){
+                            Loading()
+                        }
+                    } else {
+                        Login(
+                            modifier = Modifier.padding(innerPadding)
+                        )
+                    }
+
+                    val isLoginSuccess = viewModel.onLoginSuccess.collectAsStateLifecycleAware()
+
+                    LaunchedEffect(isLoginSuccess.value) {
+                        if (isLoginSuccess.value) {
+                            Toast.makeText(this@MainActivity, "Login realizado com sucesso", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this@MainActivity, "Falha no login", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             }
         }
     }
-}
 
-@Composable
-fun Login(modifier: Modifier = Modifier) {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.primary),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
+    @Composable
+    fun Login(modifier: Modifier = Modifier) {
+        var username by remember { mutableStateOf("") }
+        var password by remember { mutableStateOf("") }
+
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.primary),
+            contentAlignment = Alignment.Center
         ) {
-            Logo()
-            Spacer(modifier = Modifier.height(32.dp))
-            CustomTextField("Usuário", username)
-            Spacer(modifier = Modifier.height(16.dp))
-            CustomTextField("Senha", password)
-            Spacer(modifier = Modifier.height(32.dp))
-            CustomButton("Entrar",  {})
-            Spacer(modifier = Modifier.height(16.dp))
-            CustomButton("Cadastrar", {})
-            Spacer(modifier = Modifier.height(8.dp))
-            CustomButton("Esqueceu sua senha?", {})
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Logo()
+                Spacer(modifier = Modifier.height(32.dp))
+                CustomTextField("Usuário", username)
+                Spacer(modifier = Modifier.height(16.dp))
+                CustomTextField("Senha", password)
+                Spacer(modifier = Modifier.height(32.dp))
+                CustomButton("Entrar", {
+                    viewModel.startLogIn(username, password)
+                })
+                Spacer(modifier = Modifier.height(16.dp))
+                CustomButton("Cadastrar", {})
+                Spacer(modifier = Modifier.height(8.dp))
+                CustomButton("Esqueceu sua senha?", {})
+            }
+        }
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun LoginPreview() {
+        SaudesemfronteirasTheme {
+            Login()
         }
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun LoginPreview() {
-    SaudesemfronteirasTheme {
-        Login()
-    }
-}
+
