@@ -7,7 +7,7 @@ import com.example.saude_sem_fronteiras.data.util.RequestResult
 import com.example.saude_sem_fronteiras.domain.repository.HealthRepository
 
 fun interface LogInUseCase {
-    suspend fun invoke(userName: String, password: String): RequestResult<LoginResponse, Error>
+    suspend operator fun invoke(userName: String, password: String): RequestResult<LoginResponse, Error>
 }
 
 class LogIn(
