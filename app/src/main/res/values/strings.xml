@@ -3,4 +3,5 @@
     <string name="app_name_fullcase">SAÚDE SEM FRONTEIRAS</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>
