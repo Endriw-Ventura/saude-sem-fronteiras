@@ -13,9 +13,19 @@
         android:theme="@style/Theme.Saudesemfronteiras"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.RegistrationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_registration"
+            android:theme="@style/Theme.Saudesemfronteiras" />
+        <activity
+            android:name=".ui.HomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.Saudesemfronteiras" />
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="Saúde sem fronteiras"
             android:theme="@style/Theme.Saudesemfronteiras">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
