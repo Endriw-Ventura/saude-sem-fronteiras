@@ -16,14 +16,19 @@ class MainViewModel(
 
     private val loading: StateFlow<Boolean> get() = _loading
 
+    private val _onLoginSuccess = MutableStateFlow(false)
+    private val onLoginSuccess: StateFlow<Boolean> get() = _onLoginSuccess
+
     fun startLogIn(userName: String, password: String) {
         _loading.value = true
         viewModelScope.launch {
             logIn(userName = userName, password = password)
                 .onSuccess {
                     _loading.value = false
+                    _onLoginSuccess.value = true
                 }
                 .onError {
+                    _onLoginSuccess.value = false
                     _loading.value = false
                 }
         }
