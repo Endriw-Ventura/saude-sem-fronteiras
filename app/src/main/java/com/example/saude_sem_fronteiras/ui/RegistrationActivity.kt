@@ -32,27 +32,27 @@ class RegistrationActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun RegistrationScreen(modifier: Modifier = Modifier) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.primary),
-        contentAlignment = Alignment.Center
-    ) {
-        Column{
-            Text("Seja Bem vindo")
-            Text("TBD")
+    @Composable
+    fun RegistrationScreen(modifier: Modifier = Modifier) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.primary),
+            contentAlignment = Alignment.Center
+        ) {
+            Column {
+                Text("Seja Bem vindo")
+                Text("TBD")
+            }
         }
     }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun RegistrationScreenPreview() {
-    SaudesemfronteirasTheme {
-        RegistrationScreen()
+    @Preview(showBackground = true)
+    @Composable
+    fun RegistrationScreenPreview() {
+        SaudesemfronteirasTheme {
+            RegistrationScreen()
+        }
     }
 }

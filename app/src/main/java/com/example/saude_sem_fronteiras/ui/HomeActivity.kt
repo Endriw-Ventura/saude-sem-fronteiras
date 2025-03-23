@@ -32,27 +32,27 @@ class HomeActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.primary),
-        contentAlignment = Alignment.Center
-    ) {
-        Column{
-            Text("Seja Bem vindo")
-            Text("TBD")
+    @Composable
+    fun HomeScreen(modifier: Modifier = Modifier) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.primary),
+            contentAlignment = Alignment.Center
+        ) {
+            Column {
+                Text("Seja Bem vindo")
+                Text("TBD")
+            }
         }
     }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    SaudesemfronteirasTheme {
-        HomeScreen()
+    @Preview(showBackground = true)
+    @Composable
+    fun HomeScreenPreview() {
+        SaudesemfronteirasTheme {
+            HomeScreen()
+        }
     }
 }

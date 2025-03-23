@@ -31,22 +31,24 @@ class SplashActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun SplashScreen(modifier: Modifier = Modifier) {
-    Box( modifier = Modifier
-        .fillMaxSize()
-        .background(Color.Black),
-        contentAlignment = Alignment.Center) {
-        Logo()
+    @Composable
+    fun SplashScreen(modifier: Modifier = Modifier) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black),
+            contentAlignment = Alignment.Center
+        ) {
+            Logo()
+        }
     }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun SplashScreenPreview() {
-    SaudesemfronteirasTheme {
-        SplashScreen()
+    @Preview(showBackground = true)
+    @Composable
+    fun SplashScreenPreview() {
+        SaudesemfronteirasTheme {
+            SplashScreen()
+        }
     }
 }

@@ -11,23 +11,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.saude_sem_fronteiras.ui.theme.SaudesemfronteirasTheme
 
 @Composable
-fun CustomTextField(label: String, value: String){
+fun CustomTextField(label: String, value: String, onValueChange: (String) -> Unit){
 
     OutlinedTextField(
         value = value,
-        onValueChange = {},
+        onValueChange = { onValueChange(it) },
         label = { Text(label) },
         modifier = Modifier.fillMaxWidth(),
         colors = TextFieldDefaults.colors(
-            focusedTextColor = MaterialTheme.colorScheme.primary,
-            unfocusedTextColor = MaterialTheme.colorScheme.primary,
-            focusedContainerColor = MaterialTheme.colorScheme.tertiary,
-            unfocusedContainerColor = MaterialTheme.colorScheme.tertiary,
-            cursorColor = MaterialTheme.colorScheme.tertiary,
+            focusedTextColor = MaterialTheme.colorScheme.tertiary,
+            unfocusedTextColor = MaterialTheme.colorScheme.tertiary,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.secondary,
+            cursorColor = MaterialTheme.colorScheme.primary,
             focusedIndicatorColor = MaterialTheme.colorScheme.tertiary,
             unfocusedIndicatorColor = MaterialTheme.colorScheme.tertiary,
-            focusedLabelColor = MaterialTheme.colorScheme.primary,
-            unfocusedLabelColor = MaterialTheme.colorScheme.primary
+            focusedLabelColor = MaterialTheme.colorScheme.tertiary,
+            unfocusedLabelColor = MaterialTheme.colorScheme.tertiary
         )
     )
 }
@@ -35,6 +35,6 @@ fun CustomTextField(label: String, value: String){
 @Composable
 fun CustomTextFieldPreview() {
     SaudesemfronteirasTheme {
-        CustomTextField("teste", "teste")
+        CustomTextField("teste", "teste", {})
     }
 }

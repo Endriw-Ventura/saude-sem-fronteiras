@@ -100,9 +100,9 @@ class MainActivity : ComponentActivity() {
             ) {
                 Logo()
                 Spacer(modifier = Modifier.height(32.dp))
-                CustomTextField("Usuário", username)
+                CustomTextField("Usuário", username) { username = it }
                 Spacer(modifier = Modifier.height(16.dp))
-                CustomTextField("Senha", password)
+                CustomTextField("Senha", password) { password = it }
                 Spacer(modifier = Modifier.height(32.dp))
                 CustomButton("Entrar", {
                     viewModel.startLogIn(username, password)
