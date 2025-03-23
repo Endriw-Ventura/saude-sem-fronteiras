@@ -1,4 +1,4 @@
-package com.example.saude_sem_fronteiras.ui
+package com.example.saude_sem_fronteiras.ui.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

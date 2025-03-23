@@ -23,7 +23,7 @@
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.Saudesemfronteiras" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true"
             android:label="Saúde sem fronteiras"
             android:theme="@style/Theme.Saudesemfronteiras">
