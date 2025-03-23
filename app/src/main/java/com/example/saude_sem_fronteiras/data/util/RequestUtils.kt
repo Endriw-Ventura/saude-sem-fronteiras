@@ -87,15 +87,15 @@ fun <A, B, ERROR> combine(
     }
 }
 
-data class Erro(val mensagem: String, val throwable: Throwable? = null)
+data class Error(val mensagem: String, val throwable: Throwable? = null)
 
 suspend fun <T> safeApiCall(
     dispatcher: CoroutineDispatcher = Dispatchers.IO,
     apiCall: suspend () -> T
-): RequestResult<T, Erro> = withContext(dispatcher) {
+): RequestResult<T, Error> = withContext(dispatcher) {
     try {
         RequestResult.Success(apiCall())
     } catch (e: Exception) {
-        RequestResult.Failure(Erro(e.message ?: "Erro desconhecido", e))
+        RequestResult.Failure(Error(e.message ?: "Erro desconhecido", e))
     }
 }
