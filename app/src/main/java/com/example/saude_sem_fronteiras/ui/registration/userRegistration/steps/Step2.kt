@@ -1,5 +1,6 @@
 package com.example.saude_sem_fronteiras.ui.registration.userRegistration.steps
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -13,7 +14,10 @@ import com.example.saude_sem_fronteiras.ui.theme.SaudesemfronteirasTheme
 @Composable
 fun StepTwo(viewModel: UserRegistrationViewModel) {
     SaudesemfronteirasTheme {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceEvenly
+        ) {
             val cep by viewModel.cep.collectAsState()
             val estado by viewModel.estado.collectAsState()
             val cidade by viewModel.cidade.collectAsState()

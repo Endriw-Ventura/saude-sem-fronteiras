@@ -1,6 +1,7 @@
 package com.example.saude_sem_fronteiras.ui.registration.userRegistration
 
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -18,7 +19,7 @@ fun UserRegistrationPager(pagerState: PagerState, viewModel: UserRegistrationVie
         HorizontalPager(
             state = pagerState,
             modifier = Modifier
-                .fillMaxHeight()
+                .fillMaxSize()
                 .padding(16.dp)
         ) { page ->
             when (page) {

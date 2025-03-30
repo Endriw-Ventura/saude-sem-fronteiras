@@ -43,8 +43,12 @@ class UserRegistrationActivity : ComponentActivity() {
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            UserRegistrationPager(pagerState, viewModel)
-            PagerNavigationButtons(pagerState)
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                UserRegistrationPager(pagerState, viewModel)
+            }
+            UserNavigationButtons(pagerState)
         }
     }
 

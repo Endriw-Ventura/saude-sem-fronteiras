@@ -1,5 +1,6 @@
 package com.example.saude_sem_fronteiras.ui.registration.userRegistration.steps
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -20,7 +21,10 @@ fun StepOne(viewModel: UserRegistrationViewModel) {
             val dataNascimento by viewModel.dataNascimento.collectAsState()
             val genero by viewModel.genero.collectAsState()
 
-            Column(modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceEvenly
+            ) {
                 CustomTextField("Nome", nome) { viewModel.onNomeChanged(it) }
                 CustomTextField("Sobrenome", sobrenome) { viewModel.onSobrenomeChanged(it) }
                 CustomTextField("CPF", cpf) { viewModel.onCpfChanged(it) }

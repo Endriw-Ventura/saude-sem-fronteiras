@@ -4,19 +4,21 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.saude_sem_fronteiras.ui.theme.SaudesemfronteirasTheme
 
 class DoctorRegistrationActivity : ComponentActivity() {
+    private val viewModel: DoctorRegistrationViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,25 +32,32 @@ class DoctorRegistrationActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun DoctorRegistrationScreen(modifier: Modifier = Modifier) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.primary),
-        contentAlignment = Alignment.Center
-
-    ){
-
+    @Composable
+    fun DoctorRegistrationScreen(modifier: Modifier = Modifier) {
+        val pagerState = rememberPagerState(pageCount = {
+            3
+        })
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+        ) {
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                DoctorRegistrationPager(pagerState, viewModel)
+            }
+            DoctorNavigationButtons(pagerState)
+        }
     }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun DoctorRegistrationScreenPreview() {
-    SaudesemfronteirasTheme {
-        DoctorRegistrationScreen()
+
+    @Preview(showBackground = true)
+    @Composable
+    fun DoctorRegistrationScreenPreview() {
+        SaudesemfronteirasTheme {
+            DoctorRegistrationScreen()
+        }
     }
 }
