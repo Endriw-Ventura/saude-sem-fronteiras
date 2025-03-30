@@ -2,6 +2,7 @@ package com.example.saude_sem_fronteiras.ui.components
 
 import android.widget.Spinner
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,22 +20,22 @@ import com.example.saude_sem_fronteiras.ui.theme.SaudesemfronteirasTheme
 
 @Composable
 fun Loading() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth(0.9f)
-            .height(150.dp)
-            .background(Color.Black),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    SaudesemfronteirasTheme {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(150.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
             CircularProgressIndicator()
             Text(
-                "Loading",
-                color = Color.White
+                "Loading"
             )
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun LoadingPreview() {

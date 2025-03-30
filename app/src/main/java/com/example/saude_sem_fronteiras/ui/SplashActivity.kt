@@ -34,7 +34,7 @@ class SplashActivity : ComponentActivity() {
                 }
             }
             Handler(Looper.getMainLooper()).postDelayed({
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                 finish()
             }, 2000)
         }
@@ -44,8 +44,7 @@ class SplashActivity : ComponentActivity() {
     fun SplashScreen(modifier: Modifier = Modifier) {
         Box(
             modifier = Modifier
-                .fillMaxSize()
-                .background(Color.Black),
+                .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
             Logo()

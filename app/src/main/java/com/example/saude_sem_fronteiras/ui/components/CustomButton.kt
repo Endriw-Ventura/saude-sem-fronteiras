@@ -14,18 +14,16 @@ import com.example.saude_sem_fronteiras.ui.theme.SaudesemfronteirasTheme
 
 @Composable
 fun CustomButton(text: String, onClickFun: () -> Unit) {
-    Button(
-        onClick = {
-            onClickFun()
-        },
-        modifier = Modifier.fillMaxWidth(),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.secondary,
-            contentColor = MaterialTheme.colorScheme.tertiary
-        ),
-        border = BorderStroke(2.dp, MaterialTheme.colorScheme.tertiary)
-    ) {
-        Text(text, color = MaterialTheme.colorScheme.tertiary)
+    SaudesemfronteirasTheme {
+        Button(
+            onClick = {
+                onClickFun()
+            },
+            modifier = Modifier.fillMaxWidth(),
+            border = BorderStroke(2.dp, MaterialTheme.colorScheme.tertiary)
+        ) {
+            Text(text)
+        }
     }
 }
 @Preview(showBackground = true)

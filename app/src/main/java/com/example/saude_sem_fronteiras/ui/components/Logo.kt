@@ -21,14 +21,10 @@ import com.example.saude_sem_fronteiras.ui.theme.SaudesemfronteirasTheme
 
 @Composable
 fun Logo() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth(0.9f)
-            .height(150.dp)
-            .background(Color.Black),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    SaudesemfronteirasTheme {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Image(
                 painter = painterResource(R.drawable.logo),
                 contentDescription = "Logo",
@@ -36,11 +32,11 @@ fun Logo() {
             )
             Text(
                 stringResource(R.string.app_name_fullcase),
-                color = Color.White
             )
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun LogoPreview() {

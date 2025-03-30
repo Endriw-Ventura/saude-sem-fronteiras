@@ -11,17 +11,33 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.registration.doctorRegistration.DoctorRegistrationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_doctor_registration"
+            android:theme="@style/Theme.Saudesemfronteiras" />
+        <activity
+            android:name=".ui.registration.userRegistration.UserRegistrationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_user_registration"
+            android:theme="@style/Theme.Saudesemfronteiras" />
+        <activity
+            android:name=".ui.RecoverActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recover"
+            android:theme="@style/Theme.Saudesemfronteiras" />
+        <activity
             android:name=".ui.SplashActivity"
             android:exported="true"
             android:label="@string/title_activity_splash"
             android:theme="@style/Theme.Saudesemfronteiras">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <activity
-            android:name=".ui.RegistrationActivity"
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.registration.RegistrationActivity"
             android:exported="false"
             android:label="@string/title_activity_registration"
             android:theme="@style/Theme.Saudesemfronteiras" />
@@ -35,7 +51,6 @@
             android:exported="false"
             android:label="Saúde sem fronteiras"
             android:theme="@style/Theme.Saudesemfronteiras" />
-
     </application>
 
 </manifest>

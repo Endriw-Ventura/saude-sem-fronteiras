@@ -4,4 +4,7 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_recover">RecoverActivity</string>
+    <string name="title_activity_user_registration">UserRegistrationActivity</string>
+    <string name="title_activity_doctor_registration">DoctorRegistrationActivity</string>
 </resources>
