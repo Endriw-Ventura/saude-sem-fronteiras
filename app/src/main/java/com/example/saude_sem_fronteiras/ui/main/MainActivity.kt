@@ -1,5 +1,6 @@
 package com.example.saude_sem_fronteiras.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -9,31 +10,22 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.Alignment
 import com.example.saude_sem_fronteiras.ui.theme.*
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.*
 import androidx.compose.ui.unit.dp
-import com.example.saude_sem_fronteiras.R
+import com.example.saude_sem_fronteiras.ui.RecoverActivity
+import com.example.saude_sem_fronteiras.ui.registration.RegistrationActivity
 import com.example.saude_sem_fronteiras.ui.components.CustomButton
 import com.example.saude_sem_fronteiras.ui.components.CustomTextField
 import com.example.saude_sem_fronteiras.ui.components.Loading
@@ -54,8 +46,7 @@ class MainActivity : ComponentActivity() {
                     if (isLoading.value){
                         Box(
                             modifier = Modifier
-                                .fillMaxSize()
-                                .background(MaterialTheme.colorScheme.primary),
+                                .fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ){
                             Loading()
@@ -88,8 +79,7 @@ class MainActivity : ComponentActivity() {
 
         Box(
             modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.primary),
+                .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
             Column(
@@ -108,9 +98,13 @@ class MainActivity : ComponentActivity() {
                     viewModel.startLogIn(username, password)
                 })
                 Spacer(modifier = Modifier.height(16.dp))
-                CustomButton("Cadastrar", {})
+                CustomButton("Cadastrar", {
+                    startActivity(Intent(this@MainActivity, RegistrationActivity::class.java))
+                })
                 Spacer(modifier = Modifier.height(8.dp))
-                CustomButton("Esqueceu sua senha?", {})
+                CustomButton("Esqueceu sua senha?", {
+                    startActivity(Intent(this@MainActivity, RecoverActivity::class.java))
+                })
             }
         }
     }
