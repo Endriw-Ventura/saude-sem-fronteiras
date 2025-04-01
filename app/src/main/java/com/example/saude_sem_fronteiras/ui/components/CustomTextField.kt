@@ -11,13 +11,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.saude_sem_fronteiras.ui.theme.SaudesemfronteirasTheme
 
 @Composable
-fun CustomTextField(label: String, value: String, onValueChange: (String) -> Unit){
+fun CustomTextField(
+    label: String,
+    value: String,
+    readOnly: Boolean = false,
+    onValueChange: (String) -> Unit,
+    ) {
     SaudesemfronteirasTheme {
         OutlinedTextField(
             value = value,
             onValueChange = { onValueChange(it) },
             label = { Text(label) },
             modifier = Modifier.fillMaxWidth(),
+            readOnly = readOnly,
             colors = TextFieldDefaults.colors(
                 focusedTextColor = MaterialTheme.colorScheme.tertiary,
                 unfocusedTextColor = MaterialTheme.colorScheme.tertiary,
@@ -36,6 +42,6 @@ fun CustomTextField(label: String, value: String, onValueChange: (String) -> Uni
 @Composable
 fun CustomTextFieldPreview() {
     SaudesemfronteirasTheme {
-        CustomTextField("teste", "teste", {})
+        CustomTextField("teste", "teste", false, {})
     }
 }

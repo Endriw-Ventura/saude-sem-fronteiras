@@ -1,6 +1,7 @@
 package com.example.saude_sem_fronteiras.ui.registration.doctorRegistration
 
 import androidx.lifecycle.ViewModel
+import com.example.saude_sem_fronteiras.model.Option
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -14,47 +15,45 @@ class DoctorRegistrationViewModel(): ViewModel() {
     private val _cpf = MutableStateFlow("")
     val cpf: StateFlow<String> = _cpf
 
+    private val _registro = MutableStateFlow("")
+    val registro: StateFlow<String> = _registro
+
     private val _dataNascimento = MutableStateFlow("")
     val dataNascimento: StateFlow<String> = _dataNascimento
 
     private val _genero = MutableStateFlow("")
     val genero: StateFlow<String> = _genero
 
-    private val _cep = MutableStateFlow("")
-    val cep: StateFlow<String> = _cep
+    private val _especialidade = MutableStateFlow<Option?>(null)
+    val especialidade: StateFlow<Option?> = _especialidade
 
-    private val _estado = MutableStateFlow("")
-    val estado: StateFlow<String> = _estado
+    private val _horaInicial = MutableStateFlow("")
+    val horaInicial: StateFlow<String> = _horaInicial
 
-    private val _cidade = MutableStateFlow("")
-    val cidade: StateFlow<String> = _cidade
+    private val _horaFinal = MutableStateFlow("")
+    val horaFinal: StateFlow<String> = _horaFinal
 
-    private val _bairro = MutableStateFlow("")
-    val bairro: StateFlow<String> = _bairro
-
-    private val _rua = MutableStateFlow("")
-    val rua: StateFlow<String> = _rua
-
-    private val _complemento = MutableStateFlow("")
-    val complemento: StateFlow<String> = _complemento
-
-    private val _tipoSanguineo = MutableStateFlow("")
-    val tipoSanguineo: StateFlow<String> = _tipoSanguineo
-
-    private val _alergias = MutableStateFlow("")
-    val alergias: StateFlow<String> = _alergias
-
-    private val _medicamentos = MutableStateFlow("")
-    val medicamentos: StateFlow<String> = _medicamentos
-
-    private val _telefone = MutableStateFlow("")
-    val telefone: StateFlow<String> = _telefone
-
-    private val _contatoEmergencial = MutableStateFlow("")
-    val contatoEmergencial: StateFlow<String> = _contatoEmergencial
+    private val _diasEscolhidos = MutableStateFlow(listOf<String>())
+    val diasEscolhidos: StateFlow<List<String>> = _diasEscolhidos
 
     fun onNomeChanged(value: String) {
         _nome.value = value
+    }
+
+    fun onDiasEscolhidosChanged(dia: String) {
+        _diasEscolhidos.value = if (_diasEscolhidos.value.contains(dia)) {
+            _diasEscolhidos.value - dia
+        } else {
+            _diasEscolhidos.value + dia
+        }
+    }
+
+    fun onHoraInicalChanged(value: String) {
+        _horaInicial.value = value
+    }
+
+    fun onHoraFinalChanged(value: String) {
+        _horaFinal.value = value
     }
 
     fun onSobrenomeChanged(value: String) {
@@ -65,6 +64,10 @@ class DoctorRegistrationViewModel(): ViewModel() {
         _cpf.value = value
     }
 
+    fun onRegistroChanged(value: String) {
+        _registro.value = value
+    }
+
     fun onDataNascimentoChanged(value: String) {
         _dataNascimento.value = value
     }
@@ -73,47 +76,7 @@ class DoctorRegistrationViewModel(): ViewModel() {
         _genero.value = value
     }
 
-    fun onCepChanged(value: String) {
-        _cep.value = value
-    }
-
-    fun onEstadoChanged(value: String) {
-        _estado.value = value
-    }
-
-    fun onCidadeChanged(value: String) {
-        _cidade.value = value
-    }
-
-    fun onBairroChanged(value: String) {
-        _bairro.value = value
-    }
-
-    fun onRuaChanged(value: String) {
-        _rua.value = value
-    }
-
-    fun onComplementoChanged(value: String) {
-        _complemento.value = value
-    }
-
-    fun onTipoSanguineoChanged(value: String) {
-        _tipoSanguineo.value = value
-    }
-
-    fun onAlergiasChanged(value: String) {
-        _alergias.value = value
-    }
-
-    fun onMedicamentosChanged(value: String) {
-        _medicamentos.value = value
-    }
-
-    fun onTelefoneChanged(value: String) {
-        _telefone.value = value
-    }
-
-    fun onContatoEmergencialChanged(value: String) {
-        _contatoEmergencial.value = value
+    fun onEspecialidadeChanged(option: Option) {
+        _especialidade.value = option
     }
 }
